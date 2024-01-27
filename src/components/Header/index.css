@@ -1,0 +1,43 @@
+.header-bg-container {
+  background-color: #2c364c;
+  border-top-left-radius: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  justify-content: space-between;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.website-logo {
+  height: 30px;
+  width: 120px;
+}
+.tabs-container {
+  display: flex;
+}
+
+.tabs-description {
+  color: #ffffff;
+  font-size: medium;
+  text-decoration: none;
+  margin-right: 10px;
+}
+.logout-button {
+  background-color: #6366f1;
+  border-style: none;
+  padding: 6px;
+  width: 65px;
+  height: 25px;
+  color: #ffffff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .website-logo {
+    height: 30px;
+    width: 100px;
+  }
+}
