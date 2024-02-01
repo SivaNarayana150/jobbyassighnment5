@@ -1,26 +1,36 @@
 import './App.css'
 
-import {Route, Switch} from 'react-router-dom'
+import {Component} from 'react'
+
+import {Route, Switch, Redirect} from 'react-router-dom'
 
 import Home from './components/Home'
 
-import FilterGroups from './components/FilterGroups'
+import Jobs from './components/Jobs'
+
+import JobItemDetails from './components/JobItemDetails'
+
+import NotFound from './components/NotFound'
+
+import ProtectedRoute from './components/ProtectedRoute'
 
 import Login from './components/Login'
-
-import JobItem from './components/JobItem'
 
 // These are the lists used in the application. You can move them to any component needed.
 
 // Replace your code here
-const App = () => (
-  <Switch>
-    <Route exact path="/https://apis.ccbp.in/jobs/:id" component={JobItem} />
-    <Route exact path="/jobs" component={FilterGroups} />
-    <Route exact path="/login" component={Login} />
-
-    <Route exact path="/" component={Home} />
-  </Switch>
-)
+class App extends Component {
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        <ProtectedRoute exact path="/" component={Home} />
+        <ProtectedRoute exact path="/jobs/:id" component={JobItemDetails} />
+        <Route path="/not-found" component={NotFound} />
+        <Redirect to="not-found" />
+      </Switch>
+    )
+  }
+}
 
 export default App

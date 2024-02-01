@@ -2,10 +2,11 @@ import './index.css'
 
 import {Link} from 'react-router-dom'
 
-import {BsFillClipboardFill, BsFillGeoAltFill, BsStarFill} from 'react-icons/bs'
+import {BsBriefcaseFill, BsStarFill} from 'react-icons/bs'
+import {MdLocationOn} from 'react-icons/md'
 
 const JobCard = props => {
-  const {eachJob} = props
+  const {jobData} = props
   const {
     companyLogoUrl,
     employeeType,
@@ -15,50 +16,47 @@ const JobCard = props => {
     packagePerAnnum,
     rating,
     title,
-  } = eachJob
+  } = jobData
 
   return (
-    <Link to={`/https://apis.ccbp.in/jobs/:${id}`} className="link-style">
-      <button type="button" className="null-button">
-        <div className="job-card-bg-conatiner">
-          <div className="image-rating-title-container">
+    <Link to={`/jobs/${id}`} className="link-item">
+      <li className="job-item">
+        <div className="logo-title-location-container">
+          <div className="logo-title-container">
             <img
               src={companyLogoUrl}
               alt="company logo"
               className="company-logo"
             />
-            <div>
-              <p className="package">{title}</p>
-
+            <div className="title-rating-container">
+              <h1 className="title-heading">{title}</h1>
               <div className="rating-container">
-                <BsStarFill className="color-change" />
-                <p className="package">{rating}</p>
+                <BsStarFill className="rating-icon" />
+                <p className="rating-heading">{rating}</p>
               </div>
             </div>
           </div>
 
-          <div className="location-contanier">
-            <div>
-              <div className="rating-container">
-                <BsFillGeoAltFill className="change-color-e" />
-                <p className="package">{location}</p>
+          <div className="location-package-container">
+            <div className="location-employee-container">
+              <div className="location-container">
+                <MdLocationOn className="location-icon" />
+                <p className="location-heading">{location}</p>
               </div>
 
-              <div className="rating-container">
-                <BsFillClipboardFill className="change-color-e" />
-                <p className="package"> {employeeType}</p>
+              <div className="employee-type-container">
+                <BsBriefcaseFill className="brief-case-icon" />
+                <p className="employee-type-heading">{employeeType}</p>
               </div>
             </div>
 
-            <p className="package">{packagePerAnnum}</p>
+            <p className="package-heading">{packagePerAnnum}</p>
           </div>
-
-          <hr className="horizontal" />
-
-          <h1 className="package">Description</h1>
-          <p className="package">{jobDescription}</p>
         </div>
-      </button>
+        <hr className="line" />
+        <h1 className="description-heading">Description</h1>
+        <p className="description-text">{jobDescription}</p>
+      </li>
     </Link>
   )
 }

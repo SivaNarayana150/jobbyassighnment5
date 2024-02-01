@@ -1,52 +1,127 @@
-.job-card-bg-conatiner {
-  background-color: #272727;
+.link-item {
+  text-decoration: none;
+}
+.job-item {
   display: flex;
   flex-direction: column;
-  padding: 7px;
-  width: 65vw;
-  margin-bottom: 10px;
+  background-color: #202020;
+  padding: 25px;
   border-radius: 15px;
+  margin-bottom: 25px;
+  margin-top: 10px;
 }
 
-.image-rating-title-container {
+.logo-title-location-container {
   display: flex;
-
-  flex-direction: row;
-  margin-bottom: 15px;
+  flex-direction: column;
+}
+.company-logo {
+  width: 70px;
+  height: 70px;
+  margin-right: 20px;
 }
 
-.company-logo {
-  height: 25px;
+.title-rating-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title-heading {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Roboto';
+  margin-bottom: 0px;
 }
 .rating-container {
   display: flex;
-  margin-right: 10px;
   align-items: center;
+  padding-top: 0px;
 }
-.color-change {
-  color: orange;
+
+.rating-icon {
+  color: #fbbf24;
+  font-size: 18px;
+  margin-right: 10px;
 }
-.change-color-e {
+
+.rating-heading {
   color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Roboto';
 }
 
-.horizontal {
-  border-style: solid;
-  border-color: #ffffff;
-  width: 60vw;
-}
-
-.location-contanier {
+.location-package-container {
   display: flex;
-  width: 65vw;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.package {
+.location-employee-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.location-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  padding-left: 5px;
+}
+
+.location-icon {
+  color: #ffffff;
+  font-size: 22px;
+  margin-right: 6px;
+}
+
+.brief-case-icon {
+  color: #ffffff;
+  font-size: 22px;
+  margin-right: 10px;
+}
+.location-heading {
+  color: #ffffff;
+  font-size: 14px;
+  font-family: 'Roboto';
+}
+.package-heading {
+  color: #ffffff;
+  font-size: 18px;
+  font-family: 'Roboto';
+  font-weight: 500;
+}
+
+.employee-type-container {
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.employee-type-heading {
+  color: #ffffff;
+  font-size: 14px;
+  font-family: 'Roboto';
+}
+.line {
+  color: #7e858e;
+  width: 100%;
+}
+
+.description-heading {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Roboto';
+  margin-bottom: 0px;
+}
+
+.description-text {
   color: #ffffff;
   font-size: 15px;
-}
-
-.link-style {
-  text-decoration: none;
-  color: none;
+  line-height: 1.8;
+  font-family: 'Roboto';
 }

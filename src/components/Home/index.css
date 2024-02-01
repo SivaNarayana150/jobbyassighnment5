@@ -1,56 +1,95 @@
 .para {
   color: #ff0b37;
 }
-.home-bg-container {
-  background-image: url('https://assets.ccbp.in/frontend/react-js/home-lg-bg.png');
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 50px;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/home-sm-bg.png');
   background-size: cover;
-  height: 100vh;
-  margin-top: 0px;
+  height: 90vh;
+
 }
 
-.home-job-heading {
-  font-size: 50px;
-  width: 60vw;
-  color: #ffffff;
-}
 
-.home-content-container {
-  padding-left: 35px;
-}
-
-.find-job-buttons {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  background-color: #6366f1;
-  border-style: none;
-  padding: 6px;
-  width: 105px;
-  color: #ffffff;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.home-description {
-  font-size: x-large;
-  color: #ffffff;
-  width: 50vw;
-}
-
-@media screen and (max-width: 767px) {
-  .home-bg-container {
-    background-image: url('https://assets.ccbp.in/frontend/react-js/home-sm-bg.png');
-    background-size: cover;
-    height: 100vh;
-    margin-top: 0px;
+@media screen and (min-width: 767px) {
+  .home-container {
+    background-image: url('https://assets.ccbp.in/frontend/react-js/home-lg-bg.png');
+   padding-left: 120px;
+    align-items: flex-start;
   }
-  .home-job-heading {
+  
+}
+
+.home-content{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1100px;
+}
+
+@media screen and (min-width:768px){
+    .home-content{
+        align-items: flex-start;
+        width: 50%;
+    }
+}
+
+.home-heading{
+    color: #ffffff;
+    font-family: "Roboto";
+    font-weight: bold;
     font-size: 30px;
-    width: 85vw;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+@media screen and (min-width:768px){
+    .home-heading{
+        font-size: 62px;
+        text-align: left;
+        line-height: 1.2;
+    }
+}
+
+.home-description{
+
+    font-family: "Roboto";
+    font-size: 14px;
+    line-height: 35px;
     color: #ffffff;
-  }
-  .home-description {
-    font-size: small;
-    color: #ffffff;
-    width: 85vw;
-  }
+    margin-bottom: 0;
+    text-align: left;
+}
+
+
+@media screen and (min-width:768px){
+    .home-description{
+        font-size: 20px;
+        text-align: left;
+    }
+}
+
+.shop-now-button{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Roboto";
+    color:#ffffff;
+    border:none;
+    padding:12px 24px;
+    border-radius: 5px;
+    background-color: #4f46e5;
+    margin-top: 20px;
+    outline: none;
+    cursor: pointer;
+}
+
+@media screen and (min-width:768px){
+    .shop-now-button{
+        width: 150px;
+        font-size: 16px;
+    }
 }
