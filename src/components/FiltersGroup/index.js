@@ -19,8 +19,12 @@ const FiltersGroup = props => {
     const {getJobs, searchInput} = props
     return (
       <div className="search-input-container">
+        <label htmlFor="searchInput" className="sr-only">
+          Search
+        </label>
         <input
           type="search"
+          id="searchInput"
           className="search-input"
           placeholder="Search"
           value={searchInput}
@@ -32,6 +36,7 @@ const FiltersGroup = props => {
           type="button"
           className="search-button-container"
           onClick={getJobs}
+          aria-label="Search"
         >
           <BsSearch className="search-icon" />
         </button>

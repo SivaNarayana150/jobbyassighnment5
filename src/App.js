@@ -6,8 +6,6 @@ import {Route, Switch, Redirect} from 'react-router-dom'
 
 import Home from './components/Home'
 
-import Jobs from './components/Jobs'
-
 import JobItemDetails from './components/JobItemDetails'
 
 import NotFound from './components/NotFound'
