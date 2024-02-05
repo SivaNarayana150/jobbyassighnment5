@@ -76,7 +76,7 @@ class JobItemDetails extends Component {
     const jwtToken = Cookies.get('jwt_token')
     const url = `https://apis.ccbp.in/jobs/${id}`
     const options = {
-      header: {
+      headers: {
         Authorization: `Bearer ${jwtToken}`,
       },
       method: 'GET',
@@ -86,6 +86,7 @@ class JobItemDetails extends Component {
 
     if (response.ok === true) {
       const data = await response.json()
+      console.log(data)
       const updatedData = this.getFormattedData(data.job_details)
       const updatedSimilarJobsData = data.similar_jobs_data.map(
         eachSimilarJob => this.getFormattedSimilarData(eachSimilarJob),

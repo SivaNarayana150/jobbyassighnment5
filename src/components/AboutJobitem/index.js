@@ -192,7 +192,7 @@ class AboutJobItem extends Component {
   }
 
   renderJobFailureView = () => (
-    <div className="job-deatils-failure-view">
+    <div className="job-details-failure-view">
       <img
         src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
         alt="failure view"

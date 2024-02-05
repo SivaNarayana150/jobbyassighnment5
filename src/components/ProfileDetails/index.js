@@ -1,9 +1,6 @@
 import {Component} from 'react'
-
 import Loader from 'react-loader-spinner'
-
 import Cookies from 'js-cookie'
-
 import './index.css'
 
 const apiStatusConstants = {
@@ -28,7 +25,7 @@ class ProfileCard extends Component {
     const token = Cookies.get('jwt_token')
     const apiUrl = 'https://apis.ccbp.in/profile'
     const options = {
-      header: {
+      headers: {
         Authorization: `Bearer ${token}`,
       },
       method: 'GET',
@@ -86,9 +83,9 @@ class ProfileCard extends Component {
 
     switch (apiStatus) {
       case apiStatusConstants.success:
-        return this.renderProfileView()
+        return this.returnProfileView() // Fix here
       case apiStatusConstants.failure:
-        return this.renderFailureView()
+        return this.returnFailureView()
       case apiStatusConstants.inProgress:
         return this.renderLoadingView()
       default:

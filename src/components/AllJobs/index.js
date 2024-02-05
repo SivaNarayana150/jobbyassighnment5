@@ -53,7 +53,7 @@ const apiStatusConstants = {
   failure: 'FAILURE',
   inProgress: 'IN_PROGRESS',
 }
-const apiJobsStatusConstatns = {
+const apiJobsStatusConstants = {
   success: 'SUCCESS',
   initial: 'INITIAL',
   failure: 'FAILURE',
@@ -71,7 +71,7 @@ class AllJobs extends Component {
     radioInput: '',
     searchInput: '',
     apiStatus: apiStatusConstants.initial,
-    apiJobsStatus: apiJobsStatus.initial,
+    apiJobsStatus: apiJobsStatusConstants.initial,
   }
 
   componentDidMount = () => {
@@ -113,7 +113,7 @@ class AllJobs extends Component {
   }
 
   onGetJobDetails = async () => {
-    this.setState({apiJobsStatus: apiJobsStatusConstatns.inProgress})
+    this.setState({apiJobsStatus: apiJobsStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const {checkboxInputs, radioInput, searchInput} = this.state
     const jobsApiUrl = `https://apis.ccbp.in/jobs?employment_type=${checkboxInputs}&minimum_package=${radioInput}&search=${searchInput}`
@@ -126,7 +126,7 @@ class AllJobs extends Component {
 
     const responseJobs = await fetch(jobsApiUrl, optionsJobs)
 
-    if (responseJobs.ok == true) {
+    if (responseJobs.ok === true) {
       const fetchedDataJobs = responseJobs.json()
       const updatedDataJobs = fetchedDataJobs.jobs.map(eachItem => ({
         companyLogoUrl: eachItem.company_logo_url,
@@ -143,7 +143,7 @@ class AllJobs extends Component {
         apiJobsStatus: apiJobsStatusConstatns.success,
       })
     } else {
-      this.setState({apiJobsStatus: apiJobsStatusConstatns.failure})
+      this.setState({apiJobsStatus: apiJobsStatusConstants.failure})
     }
   }
 
@@ -207,11 +207,11 @@ class AllJobs extends Component {
   onRenderProfileStatus = () => {
     const {apiStatus} = this.state
     switch (apiStatus) {
-      case apiJobsStatusConstatns.success:
+      case apiJobsStatusConstants.success:
         return this.onGetProfileView()
-      case apiJobsStatusConstatns.failure:
+      case apiJobsStatusConstants.failure:
         return this.onGetProfileFailureView()
-      case apiJobsStatusConstatns.inProgress:
+      case apiJobsStatusConstants.inProgress:
         return this.renderJobLoadingView()
     }
   }
@@ -264,11 +264,11 @@ class AllJobs extends Component {
   onRenderJobStatus = () => {
     const {apiJobsStatus} = this.state
     switch (apiJobsStatus) {
-      case apiJobsStatusConstatns.success:
+      case apiJobsStatusConstants.success:
         return this.onGetJobsView()
-      case apiJobsStatusConstatns.failure:
+      case apiJobsStatusConstants.failure:
         return this.onGetJobsFailureView()
-      case apiJobsStatusConstatns.inProgress:
+      case apiJobsStatusConstants.inProgress:
         return this.renderJobLoadingView()
       default:
         return null

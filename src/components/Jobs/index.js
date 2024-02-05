@@ -61,7 +61,7 @@ const apiStatusConstants = {
 
 class Jobs extends Component {
   state = {
-    jobList: [],
+    jobsList: [],
     apiStatus: apiStatusConstants.initial,
     employeeType: [],
     minimumSalary: 0,
@@ -73,7 +73,7 @@ class Jobs extends Component {
   }
 
   getJobs = async () => {
-    this.state({
+    this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
     const {employeeType, minimumSalary, searchInput} = this.state
@@ -129,7 +129,7 @@ class Jobs extends Component {
     ) : (
       <div className="no-jobs-view">
         <img
-          src="http://assets.https://assets.ccbp.in/frontend/react-js/no-jobs-img.pngccbp.in/"
+          src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
           alt="no jobs"
           className="no-jobs-img"
         />
@@ -174,7 +174,7 @@ class Jobs extends Component {
 
   renderLoadingView = () => (
     <div className="loader-container" data-testid="loader">
-      <Loader type="ThreeDote" color="#ffffff" height="50" width="50" />
+      <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
     </div>
   )
 
@@ -208,7 +208,7 @@ class Jobs extends Component {
 
   changeEmployeeList = type => {
     this.setState(
-      prev => ({employeeType: [prev.employeeType, type]}),
+      prev => ({employeeType: [...prev.employeeType, type]}),
       this.getJobs,
     )
   }
