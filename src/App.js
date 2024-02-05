@@ -16,9 +16,6 @@ import ProtectedRoute from './components/ProtectedRoute'
 
 import Login from './components/Login'
 
-// These are the lists used in the application. You can move them to any component needed.
-
-// Replace your code here
 class App extends Component {
   render() {
     return (

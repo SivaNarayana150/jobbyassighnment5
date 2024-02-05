@@ -1,21 +1,12 @@
 import {Component} from 'react'
-
 import Loader from 'react-loader-spinner'
-
 import Cookies from 'js-cookie'
-
 import {BsFillBriefcaseFill, BsStarFill} from 'react-icons/bs'
-
 import {BiLinkExternal} from 'react-icons/bi'
-
 import {MdLocationOn} from 'react-icons/md'
-
 import Header from '../Header'
-
 import SimilarJobItem from '../SimilarJobItem'
-
 import SkillsCard from '../SkillsCard'
-
 import './index.css'
 
 const apiStatusConstants = {
@@ -52,10 +43,9 @@ class JobItemDetails extends Component {
     employmentType: data.employment_type,
     id: data.id,
     jobDescription: data.job_description,
-
     lifeAtCompany: {
-      description: data.life_at_company.description,
-      imageUrl: data.life_at_company.image_url,
+      description: data.life_at_company?.description || '',
+      imageUrl: data.life_at_company?.image_url || '',
     },
     location: data.location,
     rating: data.rating,
@@ -82,21 +72,25 @@ class JobItemDetails extends Component {
       method: 'GET',
     }
 
-    const response = await fetch(url, options)
+    try {
+      const response = await fetch(url, options)
 
-    if (response.ok === true) {
-      const data = await response.json()
-      console.log(data)
-      const updatedData = this.getFormattedData(data.job_details)
-      const updatedSimilarJobsData = data.similar_jobs_data.map(
-        eachSimilarJob => this.getFormattedSimilarData(eachSimilarJob),
-      )
-      this.setState({
-        jobData: updatedData,
-        similarJobsData: updatedSimilarJobsData,
-        apiStatus: apiStatusConstants.success,
-      })
-    } else {
+      if (response.ok === true) {
+        const data = await response.json()
+        const updatedData = this.getFormattedData(data.job_details)
+        const updatedSimilarJobsData = data.similar_jobs.map(eachSimilarJob =>
+          this.getFormattedSimilarData(eachSimilarJob),
+        )
+        this.setState({
+          jobData: updatedData,
+          similarJobsData: updatedSimilarJobsData,
+          apiStatus: apiStatusConstants.success,
+        })
+      } else {
+        this.setState({apiStatus: apiStatusConstants.failure})
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error)
       this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
@@ -143,6 +137,7 @@ class JobItemDetails extends Component {
       lifeAtCompany,
       skills,
     } = jobData
+
     const {description, imageUrl} = lifeAtCompany
 
     return (
@@ -186,7 +181,6 @@ class JobItemDetails extends Component {
               <a href={companyWebsiteUrl} className="visit-heading">
                 visit
               </a>
-
               <BiLinkExternal className="visit-icon" />
             </div>
           </div>
@@ -201,7 +195,6 @@ class JobItemDetails extends Component {
           <h1 className="life-at-company-heading">Life at Company</h1>
           <div className="life-at-company-description-image-container">
             <p className="life-at-company-description">{description}</p>
-
             <img
               src={imageUrl}
               alt="life at company"
@@ -241,7 +234,7 @@ class JobItemDetails extends Component {
       <>
         <Header />
         <div className="job-item-details-container">
-          {this.renderJobDetailsView()}
+          {this.renderJobDetails()}
         </div>
       </>
     )

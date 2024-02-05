@@ -83,7 +83,7 @@ class ProfileCard extends Component {
 
     switch (apiStatus) {
       case apiStatusConstants.success:
-        return this.returnProfileView() // Fix here
+        return this.returnProfileView()
       case apiStatusConstants.failure:
         return this.returnFailureView()
       case apiStatusConstants.inProgress:
